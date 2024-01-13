@@ -3,9 +3,17 @@ set -eu
 
 cd /home/user/workspace
 
+sudo apt install python3-empy -y
+sudo pip uninstall empy -y
 export PYTHON3_EXEC="$( which python3 )"
 export PYTHON3_LIBRARY="$( ${PYTHON3_EXEC} -c 'import os.path; from distutils import sysconfig; print(os.path.realpath(os.path.join(sysconfig.get_config_var("LIBPL"), sysconfig.get_config_var("LDLIBRARY"))))' )"
 export PYTHON3_INCLUDE_DIR="$( ${PYTHON3_EXEC} -c 'from distutils import sysconfig; print(sysconfig.get_config_var("INCLUDEPY"))' )"
+
+rm -rf src/ros2/rmw
+git clone https://github.com/ros2/rmw.git -b galactic src/ros2/rmw
+
+rm -rf src/ros2/rmw_fastrtps
+git clone https://github.com/skpawar1305/rmw_fastrtps.git src/ros2/rmw_fastrtps
 
 colcon build \
     --packages-ignore cyclonedds rcl_logging_log4cxx rcl_logging_spdlog rosidl_generator_py rclandroid ros2_talker_android ros2_listener_android \

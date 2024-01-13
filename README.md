@@ -54,3 +54,11 @@ Refer to example project: https://github.com/YasuChiba/ros2-android-test-app
 ## Note2 
 Build `ros2_android` and `ros2_android_examples` by this Dockerfile is currently not supported.  
 Please build your android app by using Android Studio.
+
+## skpawar1305:
+I've changed the ROS_DOMAIN_ID to 112 in https://sourceforge.net/projects/maskor/files/ShiningDingo.apk
+
+The complete source code of the app is in https://sourceforge.net/projects/maskor/files/ShiningDingo.7z, with generated ros2 dependencies. If you want to add your own custom messages, then you need to regenerate them using this repository. Else, you may directly add it to Android Studio and build the apk.
+
+To change the domain id:
+https://github.com/skpawar1305/rmw_fastrtps/commit/af8b3afd282c9ed37d13e9c3ce7d7b80eaa8fd54
